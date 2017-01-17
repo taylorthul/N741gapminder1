@@ -1,0 +1,85 @@
+---
+title: "Gapminder Example Report"
+author: "Melinda Higgins"
+date: "January 16, 2017"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(gapminder)
+```
+
+## Gapminder Example
+
+The following report is based on the R code examples at the **Gapminder** Github repository located at [https://github.com/jennybc/gapminder](https://github.com/jennybc/gapminder).
+
+## Gapminder dataset - summary statistics
+
+The `gapminder` dataset which is built into the `gapminder` package, has 6 variables and 1704 observations. We can list the variables in the dataset, using the `names()` function.
+
+### Variables (columns) in gapminder dataset
+
+```{r}
+names(gapminder)
+```
+
+### Structure of the gapminder dataset
+
+Another way to see the "structure" of the dataset is to run the `str()` function.
+
+```{r}
+str(gapminder)
+```
+
+You'll notice that the 1st 2 columns/variables "country" and "continent" are both "Factor" type variables. Variables 3 and 5 "year" and "pop" are both "int" Integer type variables. Variables 4 and 6 "lifeExp" and "gdpPercap" are both "num" Numeric type variables.
+
+### Summary Statistics of the gapminder dataset
+
+The built in function `summary()` in base R does a good simple summary statistics for all variables in the dataset provided. Since this dataset only has 6 variable, we can simply call `summary(gapminder)` which will give us the summary statistics for all 6 variables.
+
+```{r}
+summary(gapminder)
+```
+
+### Run specific statistic for a given variable
+
+Suppose we only wanted to get the _mean_ life expectancy. To do this we can use the built-in function `mean()`. To select only the "lifeExp" variable, we can either refer to it by which column it is in the dataset using `gapminder[,4]` which says to select all rows by leaving the 1st element between the `[]` before the comma blank and putting a 4 after the comman which specifies the 4th column. Another way to select a column is to use the name of that column which is "lifeExp" and use the dollar sign `$` selector to get `gapminder$lifeExp`.
+
+```{r}
+mean(gapminder$lifeExp)
+```
+
+### In line code
+
+We can use the same command above, but call it "inline" instead of as a separate code chunk which sets the output apart from the text in a separate section of the report. If you simply want the computation executed and the result inserted into the body of text you are writing you use "inline" code. To do this you use the following syntax _r mean(gapminder$lifeExp)_ between the backtick marks ` `. Using this syntax, we can write the following sentence.
+
+The mean life expectancy is `r mean(gapminder$lifeExp)` years.
+
+We can clean this up further by wrapping this command within the `round()` function and specifying the number of digits we want reported for this numeric result. This time, use the following command inline _r round(mean(gapminder$lifeExp), digits=2)_ and we'll rewrite the sentence below.
+
+The mean life expectancy is `r round(mean(gapminder$lifeExp), digits=2)` years.
+
+### **Homework 01 Exercise - Task 1**
+
+Modify the sentence above to also provide the standard deviation, median and sample size for life expectancy, set `digits=2`.
+
+Hint: Read help pages for the functions `sd()`, `median()`, and `length()`.
+
+### Look at a statistic by continent
+
+Using the 1st code example at the `gapminder` Github repository at [https://github.com/jennybc/gapminder](https://github.com/jennybc/gapminder), use the `aggregate()` command to see the median life expectancy by continent. You'll notice that the 1st variable listed is the "lifeExp" variable we want run "by" "continent". The "by" is indicated using the _tilde_ symbol `~`. The 2nd variable listed is "continent" - this 2nd variable is usually a "factor-type" variable or group variable. _Hint: Try running lifeExp by year to get median lifeExp for each year._ 
+
+```{r}
+aggregate(lifeExp ~ continent, gapminder, median)
+```
+
+### **Homework 01 Exercise - Task 2**
+
+Modify the r code chunk above to also provide the mean and standard deviation for life expectancy by continent.
+
+
+
+
