@@ -78,15 +78,28 @@ Hint: Read help pages for the functions `sd()`, `median()`, and `length()`.
 
 ### Look at a statistic by continent
 
-Using the 1st code example at the `gapminder` Github repository at [https://github.com/jennybc/gapminder](https://github.com/jennybc/gapminder), use the `aggregate()` command to see the median life expectancy by continent. You'll notice that the 1st variable listed is the "lifeExp" variable we want run "by" "continent". The "by" is indicated using the _tilde_ symbol `~`. The 2nd variable listed is "continent" - this 2nd variable is usually a "factor-type" variable or group variable. _Hint: Try running lifeExp by year to get median lifeExp for each year._ 
-
+Using the 1st code example at the `gapminder` Github repository at [https://github.com/jennybc/gapminder](https://github.com/jennybc/gapminder), use the `aggregate()` command to see the median life expectancy by continent. You'll notice that the 1st variable listed is the "lifeExp" variable we want run "by" "continent". The "by" is indicated using the _tilde_ symbol `~`. The 2nd variable listed is "continent" - this 2nd variable is usually a "factor-type" variable or group variable. 
 ```{r}
 aggregate(lifeExp ~ continent, gapminder, median)
+```
+_Hint: Try running lifeExp by year to get median lifeExp for each year._ 
+
+```{r}
+round(aggregate(lifeExp ~ year, gapminder, median), digits = 2)
 ```
 
 ### **Homework 01 Exercise - Task 2**
 
-Modify the r code chunk above to also provide the mean and standard deviation for life expectancy by continent.
+See below for life expectancy mean and standard deviation by continent.
+
+Mean:
+```{r}
+aggregate(lifeExp ~ continent, gapminder, mean)
+```
+Standard deviation:
+```{r}
+aggregate(lifeExp ~ continent, gapminder, sd)
+```
 
 ### Plot Life Expectancy by Continent
 
@@ -102,6 +115,21 @@ ggplot(gapminder, aes(x = continent, y = lifeExp)) +
 ### **Homework 01 Exercise - Task 3**
 
 Modify the R code chunk above to now produce two more plots: one for `gdpPercap` instead of `lifeExp` and one for `pop` instead of `lifeExp`. _Hint: change out the variable for `y` above. You will need the entire code chunk run twice - once for each different plot._
+
+GDP per Capita by Continent:
+```{r}
+library(ggplot2)
+ggplot(gapminder, aes(x = continent, y = gdpPercap)) +
+  geom_boxplot(outlier.colour = "hotpink") +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1/4)
+```
+Life Expectancy by Continent: 
+```{r}
+library(ggplot2)
+ggplot(gapminder, aes(x = continent, y = lifeExp)) +
+  geom_boxplot(outlier.colour = "hotpink") +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1/4)
+```
 
 ### Selecting a Data subset and Customizing Plot Colors
 
@@ -123,9 +151,27 @@ plot(lifeExp ~ gdpPercap, gap_with_colors,
      bg = gap_with_colors$cc[keepers])
 ```
 
+
 ### **Homework 01 Exercise - Task 4**
 
 Modify the code chunk above to make a bubble plot for 2 other continents: Americas and Asia for the year 1992. _Hint: modify the variables listed in the "keepers" line of code for the 2 countries and the year._
+
+```{r}
+# for convenience, integrate the country colors into the data.frame
+gap_with_colors <-
+  data.frame(gapminder,
+             cc = I(country_colors[match(gapminder$country,
+                                         names(country_colors))]))
+
+# bubble plot, focus just on Africa and Europe in 2007
+keepers <- with(gap_with_colors,
+                continent %in% c("Americas", "Asia") & year == 1992)
+plot(lifeExp ~ gdpPercap, gap_with_colors,
+     subset = keepers, log = "x", pch = 21,
+     cex = sqrt(gap_with_colors$pop[keepers]/pi)/1500,
+     bg = gap_with_colors$cc[keepers])
+```
+
 
 ### **Homework 01 Exercise - Task 5**
 
