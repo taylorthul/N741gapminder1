@@ -68,13 +68,11 @@ The mean life expectancy is `r mean(gapminder$lifeExp)` years.
 We can clean this up further by wrapping this command within the `round()` function and specifying the number of digits we want reported for this numeric result. This time, use the following command inline _r round(mean(gapminder$lifeExp), digits=2)_ and we'll rewrite the sentence below.
 
 
-### **Homework 01 Exercise - Task 1**
+### **Homework 01 Exercise - Answer 1**
 
 The mean life expectancy is `r round(mean(gapminder$lifeExp), digits=2)` years. The standard deviation of life expectancy is `r round(sd(gapminder$lifeExp), digits=2)`, while the median is `r round(median(gapminder$lifeExp), digits=2)`.  The sample size for the life expectancy data is `r round(length(gapminder$lifeExp), digits=2)`. 
 
-Modify the sentence above to also provide the standard deviation, median and sample size for life expectancy, set `digits=2`.
 
-Hint: Read help pages for the functions `sd()`, `median()`, and `length()`.
 
 ### Look at a statistic by continent
 
@@ -88,7 +86,7 @@ _Hint: Try running lifeExp by year to get median lifeExp for each year._
 round(aggregate(lifeExp ~ year, gapminder, median), digits = 2)
 ```
 
-### **Homework 01 Exercise - Task 2**
+### **Homework 01 Exercise - Answer 2**
 
 See below for life expectancy mean and standard deviation by continent.
 
@@ -112,7 +110,7 @@ ggplot(gapminder, aes(x = continent, y = lifeExp)) +
   geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1/4)
 ```
 
-### **Homework 01 Exercise - Task 3**
+### **Homework 01 Exercise - Answer 3**
 
 Modify the R code chunk above to now produce two more plots: one for `gdpPercap` instead of `lifeExp` and one for `pop` instead of `lifeExp`. _Hint: change out the variable for `y` above. You will need the entire code chunk run twice - once for each different plot._
 
@@ -152,7 +150,7 @@ plot(lifeExp ~ gdpPercap, gap_with_colors,
 ```
 
 
-### **Homework 01 Exercise - Task 4**
+### **Homework 01 Exercise - Answer 4**
 
 Modify the code chunk above to make a bubble plot for 2 other continents: Americas and Asia for the year 1992. _Hint: modify the variables listed in the "keepers" line of code for the 2 countries and the year._
 
@@ -173,14 +171,10 @@ plot(lifeExp ~ gdpPercap, gap_with_colors,
 ```
 
 
-### **Homework 01 Exercise - Task 5**
+### **Homework 01 Exercise - Answer 5**
 
-* For your report, modify the YAML to put a good TITLE for your report and put in YOUR NAME and change the DATE.
-* If you have MiKTeX or MacTex installed and running on your computer, you can compile the report directly to PDF ("Knit to PDF"). However, if you didn't install these, you should still be able to "Knit to HTML" or "Knit to Word". Once you've got the HTML or Microsoft Word DOCX file created, you can print these to PDF.
-* Make sure your report completes the 4 tasks above with your associated R chunks along with a description or commentary on what you did and the result.
-* Submit the PDF homework using Canvas for N741.
-* Include in your report a link to your Github repository with your RMD file and any other associated output you created. In the body of your Rmarkdown (RMD) report use the `[]()` syntax to embed the URL "web link". For example, the link for this exercise is located at [https://github.com/melindahiggins2000/N741gapminder1](https://github.com/melindahiggins2000/N741gapminder1) which was typed in to the Rmarkdown file as `[https://github.com/melindahiggins2000/N741gapminder1](https://github.com/melindahiggins2000/N741gapminder1)`.
+
 
 My Github repositiory is located at [https://github.com/taylorthul/N741gapminder1](https://github.com/taylorthul/N741gapminder1)
 
-
+The link to the Rmarkdown file is located at []()
