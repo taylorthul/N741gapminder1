@@ -1,10 +1,10 @@
 ---
 title: "Homework 1 Gapminder Report"
 author: "Taylor Thul"
-date: "January 18, 2017"
+date: "January 24, 2017"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
   word_document: default
 ---
 
@@ -67,9 +67,10 @@ The mean life expectancy is `r mean(gapminder$lifeExp)` years.
 
 We can clean this up further by wrapping this command within the `round()` function and specifying the number of digits we want reported for this numeric result. This time, use the following command inline _r round(mean(gapminder$lifeExp), digits=2)_ and we'll rewrite the sentence below.
 
-The mean life expectancy is `r round(mean(gapminder$lifeExp), digits=2)` years.
 
 ### **Homework 01 Exercise - Task 1**
+
+The mean life expectancy is `r round(mean(gapminder$lifeExp), digits=2)` years. The standard deviation of life expectancy is `r round(sd(gapminder$lifeExp), digits=2)`, while the median is `r round(median(gapminder$lifeExp), digits=2)`.  The sample size for the life expectancy data is `r round(length(gapminder$lifeExp), digits=2)`. 
 
 Modify the sentence above to also provide the standard deviation, median and sample size for life expectancy, set `digits=2`.
 
