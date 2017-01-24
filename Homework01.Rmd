@@ -181,6 +181,6 @@ plot(lifeExp ~ gdpPercap, gap_with_colors,
 * Submit the PDF homework using Canvas for N741.
 * Include in your report a link to your Github repository with your RMD file and any other associated output you created. In the body of your Rmarkdown (RMD) report use the `[]()` syntax to embed the URL "web link". For example, the link for this exercise is located at [https://github.com/melindahiggins2000/N741gapminder1](https://github.com/melindahiggins2000/N741gapminder1) which was typed in to the Rmarkdown file as `[https://github.com/melindahiggins2000/N741gapminder1](https://github.com/melindahiggins2000/N741gapminder1)`.
 
-
+My Github repositiory is located at [https://github.com/taylorthul/N741gapminder1](https://github.com/taylorthul/N741gapminder1)
 
 
