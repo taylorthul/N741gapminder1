@@ -2,10 +2,7 @@
 title: "Homework 1 Gapminder Report"
 author: "Taylor Thul"
 date: "January 24, 2017"
-output:
-  html_document: default
-  pdf_document: default
-  word_document: default
+output: github_document
 ---
 
 ## **Homework 01 SETUP**
@@ -175,6 +172,5 @@ plot(lifeExp ~ gdpPercap, gap_with_colors,
 
 
 
-My Github repositiory is located at [https://github.com/taylorthul/N741gapminder1](https://github.com/taylorthul/N741gapminder1)
+My Github account is at [https://github.com/taylorthul](https://github.com/taylorthul) and the repositiory with this homework file is located at [https://github.com/taylorthul/N741gapminder1](https://github.com/taylorthul/N741gapminder1)
 
-The link to the Rmarkdown file is located at []()
